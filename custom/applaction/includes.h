@@ -8,6 +8,7 @@
 #ifndef __CM_MAIN_H__
 #define __CM_MAIN_H__
 
+#include "cm_os.h"
 
 
 #endif
