@@ -2,6 +2,7 @@
 #define __APP_H
 
 #include "includes.h"
+#include "uart.h"
 
 #define FlagSET(Flag,bit)	(Flag |= (bit))		//Flag置位
 #define FlagCLR(Flag,bit)	(Flag &= ~(bit))	//Flag清位
