@@ -1,21 +1,39 @@
 #include "app.h"
 
+/* 互斥锁 */
+osMutexId_t TASK_MT = NULL;
 
 void task1(void *argument)
 {
+    osStatus_t resM;
     while (1)
     {
-        u0_printf("task1 runing\r\n");
-        osDelayMs(1000);
+        resM = osMutexAcquire(TASK_MT,1000);
+        if(resM == osOK){
+            osDelayMs(100);
+            u0_printf("task1 runing1\r\n");
+            osMutexRelease(TASK_MT);
+        }
+        u0_printf("Task1 TASK_MT Timeout\r\n");
+        // osDelayMs(1000);
     }
 }
 
 void task2(void *argument)
 {
-    while(1){
-        u0_printf("task2 runing\r\n");
-        osDelayMs(1000);
+    osStatus_t resM;
+    while (1)
+    {
+        resM = osMutexAcquire(TASK_MT,1000);
+        if(resM == osOK){
+            u0_printf("task2 runing>>>>>>>>>>>>>>\r\n");
+            osDelayMs(1000);
+            u0_printf("task2 runing..............\r\n");
+            osMutexRelease(TASK_MT);
+        }
+        u0_printf("Task2 TASK_MT Timeout\r\n");
     }
+    
 }
 
 osThreadId_t osThreadCreat(const char * name,osThreadFunc_t func,osPriority_t priority,uint32_t stacksize)

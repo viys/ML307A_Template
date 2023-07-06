@@ -8,6 +8,8 @@
 #define FlagCLR(Flag,bit)	(Flag &= ~(bit))	//Flag清位
 #define FlagGET(Flag,bit)	(Flag & (bit))		//Flag获取
 
+extern osMutexId_t TASK_MT;
+
 /**
  * @brief 进程创建函数
  * 
