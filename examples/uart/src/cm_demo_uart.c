@@ -305,7 +305,7 @@ void cm_demo_uart(void)
         CM_UART_PARITY_NONE,
         CM_UART_STOP_BIT_ONE, 
         CM_UART_FLOW_CTRL_NONE, 
-        CM_UART_BAUDRATE_9600
+        CM_UART_BAUDRATE_115200
     };
     cm_uart_event_t event = 
     {
