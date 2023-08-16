@@ -1,3 +1,11 @@
+/*
+ * @Author: yuzy 2628587386@qq.com
+ * @Date: 2023-08-16 18:28:42
+ * @LastEditors: yuzy 2628587386@qq.com
+ * @LastEditTime: 2023-08-16 18:38:40
+ * @FilePath: \ML307A_Template\custom\applaction\main.c
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 #include "app.h"
 
 osThreadId_t ThreadI_DT;   // 线程ID标识
@@ -12,13 +20,14 @@ int cm_opencpu_entry(char *param)
 	TASK_MT = osMutexNew(NULL);
 	/* 创建信号量 */
 	TASK_ST = osSemaphoreNew(1, 0, NULL);
+	/* 创建定时器 */
+	// tim = osTimerCreat("timer1",time1_callback,osTimerPeriodic);
 	/* 创建进程 */
 	osThreadCreat("task1", task1, 6, 1024);
 	osThreadCreat("task2", task2, 5, 1024);
 	osThreadCreat("task3", task3, 7, 1024);
 
-	/* 创建定时器 */
-	osTimerCreat("timer1",time1_callback,osTimerPeriodic);
+	
 
 	return 0;
 }
